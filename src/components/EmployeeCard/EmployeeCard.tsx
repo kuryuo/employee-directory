@@ -1,19 +1,36 @@
 import styles from './EmployeeCard.module.css';
 
-const EmployeeCard = () => {
+interface Employee {
+  id: number;
+  name: string;
+  photo: string;
+  phone: string;
+  position: string;
+  stack: string[];
+  birthdate: string;
+  dateOfEmployment: string;
+}
+
+interface EmployeeCardProps {
+  employee: Employee;
+}
+
+const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee }) => {
   return (
     <div className={styles.cardContainer}>
       <div className={styles.cardHeader}>
         <div className={styles.avatarContainer}>
-          <div className={styles.avatar}></div>
+          <img src={employee.photo} alt={employee.name} className={styles.avatar} />
         </div>
         <div className={styles.infoContainer}>
-          <h2 className={styles.name}>Иванов Иван Иванович</h2>
-          <p className={styles.position}>Frontend-разработчик</p>
+          <h2 className={styles.name}>{employee.name}</h2>
+          <p className={styles.position}>{employee.position}</p>
           <div className={styles.techStack}>
-            <span className={styles.tech}>React</span>
-            <span className={styles.tech}>Node.js</span>
-            <span className={styles.tech}>TypeScript</span>
+            {employee.stack.map((tech, index) => (
+              <span key={index} className={styles.tech}>
+                {tech}
+              </span>
+            ))}
           </div>
         </div>
       </div>
@@ -24,15 +41,15 @@ const EmployeeCard = () => {
         <h3 className={styles.infoTitle}>Основная информация</h3>
         <div className={styles.infoRow}>
           <span className={styles.infoLabel}>Контактный телефон:</span>
-          <span className={styles.infoValue}>+7 123 456-78-90</span>
+          <span className={styles.infoValue}>{employee.phone}</span>
         </div>
         <div className={styles.infoRow}>
           <span className={styles.infoLabel}>Дата рождения:</span>
-          <span className={styles.infoValue}>01.01.1990</span>
+          <span className={styles.infoValue}>{employee.birthdate}</span>
         </div>
         <div className={styles.infoRow}>
           <span className={styles.infoLabel}>Дата устройства:</span>
-          <span className={styles.infoValue}>01.06.2020</span>
+          <span className={styles.infoValue}>{employee.dateOfEmployment}</span>
         </div>
       </div>
     </div>

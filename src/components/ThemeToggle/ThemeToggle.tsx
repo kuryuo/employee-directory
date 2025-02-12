@@ -8,7 +8,6 @@ export const ThemeToggle = () => {
 
   const toggleTheme = () => {
     setIsDark(prev => !prev);
-    // добавить логику сохранения темы в localStorage
     document.body.classList.toggle('dark-theme', !isDark);
   };
 
