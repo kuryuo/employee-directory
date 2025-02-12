@@ -1,5 +1,6 @@
 import { Employee } from '../../types'; 
 import { useEmployees } from '../../hooks/useEmployees';
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import Filters from '../../components/Filter/Filter';
 import Header from '../../components/Header/Header';
 import EmployeeList from '../../components/EmployeesList/EmployeesList';
@@ -7,6 +8,12 @@ import { useFilters } from '../../hooks/useFilters';
 
 const EmployeeListPage = () => {
   const { employees, loading, error } = useEmployees();
+
+  const crumbs = [
+    { label: 'Главная', path: '/' },
+    { label: 'Список сотрудников', path: '/' },
+  ];
+
   const { filters } = useFilters();
 
   const filterEmployees = (employees: Employee[]) => {
@@ -27,6 +34,7 @@ const EmployeeListPage = () => {
   return (
     <div>
       <Header />
+      <Breadcrumbs crumbs={crumbs} />
       <Filters />
       <EmployeeList employees={filteredEmployees} />
     </div>
