@@ -1,0 +1,85 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cardHeader {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .avatarContainer {
+    width: 163px; 
+    height: 163px; 
+    background-color: #ccc; 
+    border-radius: 50%;
+  }
+  
+  .avatar {
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    border-radius: 50%;
+  }
+  
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .name {
+    font-size: 40px;
+    font-weight: bold;
+  }
+  
+  .position {
+    font-size: 24px;
+  }
+  
+  .techStack {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .tech {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .mainInfo {
+    margin-top: 20px;
+  }
+  
+  .infoTitle {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .infoRow {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .infoLabel {
+    width: 300px; 
+    font-size: 24px;
+    font-weight: 500;
+  }
+  
+  .infoValue {
+    margin-left: 50px;
+    font-size: 24px;
+    text-align: left; 
+  }
+
+  .divider {
+    height: 1px;
+    background-color: var(--grey); 
+    margin: 20px 0;
+  }
+  
+  

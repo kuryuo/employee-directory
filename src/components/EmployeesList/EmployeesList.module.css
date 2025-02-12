@@ -1,0 +1,41 @@
+.container {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .headerRow, .dataRow {
+    display: flex;
+    padding: 20px;
+  }
+  
+  .headerRow {
+    color: var(--grey-text);
+    font-family: Raleway, sans-serif;
+  }
+  
+  .dataRow {
+    background-color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dataRow:hover {
+    background-color: var(--grey);
+  }
+  
+  .fullName {
+    flex: 7.25;
+  }
+  
+  .position {
+    flex: 3.92;
+  }
+  
+  .phone {
+    flex: 2.72;
+  }
+  
+  .birthDate {
+    flex: 1.51;
+  }
+  
+  
