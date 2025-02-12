@@ -1,14 +1,16 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './index.css';
-import Header from './components/Header/Header'; 
-import EmployeeList from './components/EmployeesList/EmployeesList';
-import Filters from './components/Filter/Filter';
-import EmployeeCard from './components/EmployeeCard/EmployeeCard';
+import EmployeeList from './pages/EmployeeList/EmployeeList';
+import EmployeeProfile from './pages/EmployeeProfile/EmployeeProfile';
 
 function App() {
   return (
-    <>
-      <EmployeeCard /> 
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<EmployeeList />} />
+        <Route path="/profile" element={<EmployeeProfile />} />
+      </Routes>
+    </Router>
   );
 }
 

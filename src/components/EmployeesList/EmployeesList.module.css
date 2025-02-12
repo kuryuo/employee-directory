@@ -1,6 +1,7 @@
 .container {
     width: 100%;
     border-collapse: collapse;
+    padding: 10px 162px;
   }
   
   .headerRow, .dataRow {
