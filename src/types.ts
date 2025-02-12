@@ -17,4 +17,8 @@ export interface Employee {
     error: string | null;
   }
   
-  
+  export interface FiltersState {
+    position: string[];
+    gender: string[];
+    stack: string[];
+  }

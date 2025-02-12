@@ -1,129 +1,99 @@
-import { useState } from 'react';
 import styles from './Filter.module.css';
+import { POSITIONS, GENDERS, TECH_STACK } from '../../const';
+import { useFilters } from '../../hooks/useFilters';
 
 const Filters = () => {
-  const [openFilter, setOpenFilter] = useState<number | null>(null);
+  const { filters, updateFilters, toggleFilter, openFilter, toggleDropdown } = useFilters();
 
-  const toggleFilter = (index: number) => {
-    setOpenFilter(prevIndex => (prevIndex === index ? null : index));
+  const applyFilters = () => {
+    updateFilters(filters);  
+  };
+
+  const renderSelectedFilters = () => {
+    return Object.entries(filters).map(([category, values]) =>
+      (values as string[]).map((value: string) => (  
+        <div key={value} className={styles.selectedFilter}>
+          <button 
+            className={styles.removeFilterBtn} 
+            onClick={() => toggleFilter(category as keyof typeof filters, value)} >
+            ×
+          </button>
+          <span>{value}</span>
+        </div>
+      ))
+    );
   };
 
   return (
     <div className={styles.pageContainer}>
       <div className={styles.filtersContainer}>
         <h1 className={styles.title}>Список сотрудников</h1>
+
         <div className={styles.filterWrapper}>
           <div className={styles.filter}>
-            <span 
-              className={styles.filterTitle} 
-              onClick={() => toggleFilter(0)}
-            >
+            <span className={styles.filterTitle} onClick={() => toggleDropdown(0)}>
               Должность
             </span>
-            <div 
-              className={`${styles.arrow} ${openFilter === 0 ? styles.openArrow : ''}`}
-            ></div>
-            <div 
-              className={`${styles.dropdown} ${openFilter === 0 ? styles.open : ''}`}
-            >
-              <label>
-                Дизайнер <input type="checkbox" />
-              </label>
-              <label>
-                Аналитик <input type="checkbox" />
-              </label>
-              <label>
-                Fullstack <input type="checkbox" />
-              </label>
-              <label>
-                Менеджер <input type="checkbox" />
-              </label>
-              <label>
-                Frontend-разработчик <input type="checkbox" />
-              </label>
-              <label>
-                Backend-разработчик <input type="checkbox" />
-              </label>
+            <div className={`${styles.arrow} ${openFilter === 0 ? styles.openArrow : ''}`}></div>
+            <div className={`${styles.dropdown} ${openFilter === 0 ? styles.open : ''}`}>
+              {POSITIONS.map(position => (
+                <label key={position}>
+                  {position}
+                  <input
+                    type="checkbox"
+                    checked={filters.position.includes(position)}
+                    onChange={() => toggleFilter('position', position)}
+                  />
+                </label>
+              ))}
             </div>
           </div>
 
           <div className={styles.filter}>
-            <span 
-              className={styles.filterTitle} 
-              onClick={() => toggleFilter(1)}
-            >
+            <span className={styles.filterTitle} onClick={() => toggleDropdown(1)}>
               Пол
             </span>
-            <div 
-              className={`${styles.arrow} ${openFilter === 1 ? styles.openArrow : ''}`}
-            ></div>
-            <div 
-              className={`${styles.dropdown} ${openFilter === 1 ? styles.open : ''}`}
-            >
-              <label>
-                Женский <input type="checkbox" />
-              </label>
-              <label>
-                Мужской <input type="checkbox" />
-              </label>
+            <div className={`${styles.arrow} ${openFilter === 1 ? styles.openArrow : ''}`}></div>
+            <div className={`${styles.dropdown} ${openFilter === 1 ? styles.open : ''}`}>
+              {GENDERS.map(gender => (
+                <label key={gender}>
+                  {gender}
+                  <input
+                    type="checkbox"
+                    checked={filters.gender.includes(gender)}
+                    onChange={() => toggleFilter('gender', gender)}
+                  />
+                </label>
+              ))}
             </div>
           </div>
 
           <div className={styles.filter}>
-            <span 
-              className={styles.filterTitle} 
-              onClick={() => toggleFilter(2)}
-            >
+            <span className={styles.filterTitle} onClick={() => toggleDropdown(2)}>
               Стек технологий
             </span>
-            <div 
-              className={`${styles.arrow} ${openFilter === 2 ? styles.openArrow : ''}`}
-            ></div>
-            <div 
-              className={`${styles.dropdown} ${openFilter === 2 ? styles.open : ''}`}
-            >
-              <label>
-                React <input type="checkbox" />
-              </label>
-              <label>
-                Node.js <input type="checkbox" />
-              </label>
-              <label>
-                TypeScript <input type="checkbox" />
-              </label>
-              <label>
-                Python <input type="checkbox" />
-              </label>
+            <div className={`${styles.arrow} ${openFilter === 2 ? styles.openArrow : ''}`}></div>
+            <div className={`${styles.dropdown} ${openFilter === 2 ? styles.open : ''}`}>
+              {TECH_STACK.map(tech => (
+                <label key={tech}>
+                  {tech}
+                  <input
+                    type="checkbox"
+                    checked={filters.stack.includes(tech)}
+                    onChange={() => toggleFilter('stack', tech)}
+                  />
+                </label>
+              ))}
             </div>
           </div>
         </div>
-      </div>
-
-      <div className={styles.searchContainer}>
-        <input 
-          type="text" 
-          placeholder="Поиск сотрудников" 
-          className={styles.searchInput} 
-        />
       </div>
 
       <div className={styles.selectedFiltersContainer}>
         <span>Выбранные фильтры:</span>
-        <div className={styles.selectedFilters}>
-          <div className={styles.selectedFilter}>
-          <button className={styles.removeFilterBtn}>×</button>
-            <span>Дизайнер</span>
-          </div>
-          <div className={styles.selectedFilter}>
-          <button className={styles.removeFilterBtn}>×</button>
-            <span>Мужской</span>
-          </div>
-          <div className={styles.selectedFilter}>
-          <button className={styles.removeFilterBtn}>×</button>
-            <span>React</span>
-          </div>
-        </div>
-        <button className={styles.searchBtn}>Найти</button>
+        <div className={styles.selectedFilters}>{renderSelectedFilters()}</div>
+
+        <button onClick={applyFilters} className={styles.searchBtn}>Найти</button>
       </div>
     </div>
   );
