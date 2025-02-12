@@ -1,0 +1,24 @@
+.hdr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 180px;
+    box-shadow: 0 4px 8px rgba(57, 113, 164, 0.25);
+  }
+
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+  
+  .contact {
+    font-family: Raleway, sans-serif;
+    font-size: 18px;
+    color: var(--black);
+  }
+  
+  .contact + .contact {
+    margin-left: 10px;
+  }
+  
