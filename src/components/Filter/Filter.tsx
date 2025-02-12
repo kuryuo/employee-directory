@@ -1,21 +1,38 @@
+import { useEffect, useRef } from 'react';
 import styles from './Filter.module.css';
 import { POSITIONS, GENDERS, TECH_STACK } from '../../const';
 import { useFilters } from '../../hooks/useFilters';
 
 const Filters = () => {
   const { filters, updateFilters, toggleFilter, openFilter, toggleDropdown } = useFilters();
+  const filtersContainerRef = useRef<HTMLDivElement | null>(null); 
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (filtersContainerRef.current && !filtersContainerRef.current.contains(event.target as Node)) {
+        toggleDropdown(null); 
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [toggleDropdown]);
 
   const applyFilters = () => {
-    updateFilters(filters);  
+    updateFilters(filters);
   };
 
   const renderSelectedFilters = () => {
     return Object.entries(filters).map(([category, values]) =>
-      (values as string[]).map((value: string) => (  
+      (values as string[]).map((value: string) => (
         <div key={value} className={styles.selectedFilter}>
-          <button 
-            className={styles.removeFilterBtn} 
-            onClick={() => toggleFilter(category as keyof typeof filters, value)} >
+          <button
+            className={styles.removeFilterBtn}
+            onClick={() => toggleFilter(category as keyof typeof filters, value)}
+          >
             ×
           </button>
           <span>{value}</span>
@@ -26,7 +43,7 @@ const Filters = () => {
 
   return (
     <div className={styles.pageContainer}>
-      <div className={styles.filtersContainer}>
+      <div className={styles.filtersContainer} ref={filtersContainerRef}>
         <h1 className={styles.title}>Список сотрудников</h1>
 
         <div className={styles.filterWrapper}>
