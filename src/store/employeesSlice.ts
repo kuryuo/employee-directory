@@ -1,23 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { fetchEmployeesApi, fetchEmployeeApi } from '../api/employeeApi';
- 
-interface Employee {
-  id: number;
-  name: string;
-  photo: string;
-  phone: string;
-  position: string;
-  stack: string[];
-  birthdate: string;
-  dateOfEmployment: string;
-}
-
-interface EmployeeState {
-  employees: Employee[];
-  employee: Employee | null;
-  loading: boolean;
-  error: string | null;
-}
+import { Employee, EmployeeState } from '../types';
 
 const initialState: EmployeeState = {
   employees: [],

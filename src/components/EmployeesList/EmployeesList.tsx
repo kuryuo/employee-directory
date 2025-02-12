@@ -1,16 +1,5 @@
 import styles from './EmployeesList.module.css';
-
-interface Employee {
-  id: number;
-  name: string;
-  photo: string;
-  phone: string;
-  gender: string;
-  position: string;
-  stack: string[];
-  birthdate: string;
-  dateOfEmployment: string;
-}
+import { Employee } from '../../types'; 
 
 interface EmployeeListProps {
   employees: Employee[];

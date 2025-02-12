@@ -1,15 +1,5 @@
 import styles from './EmployeeCard.module.css';
-
-interface Employee {
-  id: number;
-  name: string;
-  photo: string;
-  phone: string;
-  position: string;
-  stack: string[];
-  birthdate: string;
-  dateOfEmployment: string;
-}
+import { Employee } from '../../types';
 
 interface EmployeeCardProps {
   employee: Employee;
