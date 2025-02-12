@@ -1,6 +1,7 @@
 import styles from './EmployeesList.module.css';
 import { Employee } from '../../types'; 
 import { useNavigate } from 'react-router-dom';
+import {monthMap} from '../../const';
 
 interface EmployeeListProps {
   employees: Employee[];
@@ -11,6 +12,18 @@ const EmployeeList = ({ employees }: EmployeeListProps) => {
 
   const handleRowClick = (id: number) => {
     navigate(`/profile/${id.toString()}`); 
+  };
+
+  const formatDateWithMonthName = (date: string) => {
+    const [day, month, year] = date.split(' ');
+
+    const monthNumber = monthMap[month.toLowerCase()];
+
+    if (monthNumber) {
+      return `${day}.${monthNumber}.${year}`;
+    } else {
+      return date; 
+    }
   };
   
   return (
@@ -30,7 +43,7 @@ const EmployeeList = ({ employees }: EmployeeListProps) => {
           <div className={styles.fullName}>{employee.name}</div>
           <div className={styles.position}>{employee.position}</div>
           <div className={styles.phone}>{employee.phone}</div>
-          <div className={styles.birthDate}>{employee.birthdate}</div>
+          <div className={styles.birthDate}>{formatDateWithMonthName(employee.birthdate)}</div>
         </div>
       ))}
     </div>

@@ -5,12 +5,12 @@ import { useFilters } from '../../hooks/useFilters';
 
 const Filters = () => {
   const { filters, updateFilters, toggleFilter, openFilter, toggleDropdown } = useFilters();
-  const filtersContainerRef = useRef<HTMLDivElement | null>(null); 
+  const filtersContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (filtersContainerRef.current && !filtersContainerRef.current.contains(event.target as Node)) {
-        toggleDropdown(null); 
+        toggleDropdown(null);
       }
     };
 
@@ -28,10 +28,17 @@ const Filters = () => {
   const renderSelectedFilters = () => {
     return Object.entries(filters).map(([category, values]) =>
       (values as string[]).map((value: string) => (
-        <div key={value} className={styles.selectedFilter}>
+        <div
+          key={value}
+          className={styles.selectedFilter}
+          onClick={() => toggleFilter(category as keyof typeof filters, value)} 
+        >
           <button
             className={styles.removeFilterBtn}
-            onClick={() => toggleFilter(category as keyof typeof filters, value)}
+            onClick={(e) => {
+              e.stopPropagation(); 
+              toggleFilter(category as keyof typeof filters, value);
+            }}
           >
             ×
           </button>

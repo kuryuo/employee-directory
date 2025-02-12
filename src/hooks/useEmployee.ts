@@ -1,28 +1,17 @@
-import { useState, useEffect } from 'react';
-import { fetchEmployeeApi } from '../api/employeeApi';
-import { Employee } from '../types';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchEmployee } from '../store/employeesSlice';
+import { RootState, AppDispatch } from '../store/store';
 
 export const useEmployee = (id: string | undefined) => {
-  const [employee, setEmployee] = useState<Employee | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const dispatch = useDispatch<AppDispatch>();
+  const { employee, loading, error } = useSelector((state: RootState) => state.employees);
 
   useEffect(() => {
-    const getEmployee = async () => {
-      if (id) {
-        try {
-          const data = await fetchEmployeeApi(id);
-          setEmployee(data);
-        } catch {
-          setError('Ошибка загрузки данных сотрудника');
-        } finally {
-          setLoading(false);
-        }
-      }
-    };
-
-    getEmployee();
-  }, [id]);
+    if (id) {
+      dispatch(fetchEmployee(id));  
+    }
+  }, [id, dispatch]);
 
   return { employee, loading, error };
 };
