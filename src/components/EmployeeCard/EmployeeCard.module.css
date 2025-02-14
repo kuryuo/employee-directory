@@ -12,18 +12,17 @@
 .avatarContainer {
   width: 163px;
   height: 163px;
-  background-color: #ccc;
   border-radius: 50%;
 }
 
 .avatar {
   width: 100%;
   height: 100%;
-  background-color: #ccc;
   border-radius: 50%;
 }
 
 .infoContainer {
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,13 +43,14 @@
 }
 
 .tech {
-  background-color: #f0f0f0;
+  background-color: var(--grey);
   padding: 10px 20px;
   border-radius: 4px;
   font-size: 16px;
 }
 
 .mainInfo {
+  color: var(--text-color);
   margin-top: 20px;
 }
 
@@ -79,6 +79,6 @@
 
 .divider {
   height: 1px;
-  background-color: var(--grey);
+  background-color: var(--grey-text);
   margin: 20px 0;
 }

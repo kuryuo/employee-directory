@@ -4,8 +4,7 @@ import { POSITIONS, GENDERS, TECH_STACK } from "../../const";
 import { useFilters } from "../../hooks/useFilters";
 
 const Filters = () => {
-  const { filters, updateFilters, toggleFilter, openFilter, toggleDropdown } =
-    useFilters();
+  const { filters, toggleFilter, openFilter, toggleDropdown } = useFilters();
   const filtersContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -24,10 +23,6 @@ const Filters = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [toggleDropdown]);
-
-  const applyFilters = () => {
-    updateFilters(filters);
-  };
 
   const renderSelectedFilters = () => {
     return Object.entries(filters).map(([category, values]) =>
@@ -150,13 +145,15 @@ const Filters = () => {
         </div>
       </div>
 
+      <input
+        type="text"
+        className={styles.searchInput}
+        placeholder="Поиск сотрудников..."
+      />
+
       <div className={styles.selectedFiltersContainer}>
         <span>Выбранные фильтры:</span>
         <div className={styles.selectedFilters}>{renderSelectedFilters()}</div>
-
-        <button onClick={applyFilters} className={styles.searchBtn}>
-          Найти
-        </button>
       </div>
     </div>
   );

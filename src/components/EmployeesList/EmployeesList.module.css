@@ -11,12 +11,13 @@
 }
 
 .headerRow {
-  color: var(--grey-text);
+  color: var(--text-grey);
   font-family: Raleway, sans-serif;
 }
 
 .dataRow {
-  background-color: white;
+  color: var(--text-color);
+  background-color: var(--main-color);
   transition: background-color 0.3s ease;
 }
 

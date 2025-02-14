@@ -68,12 +68,6 @@ const EmployeeListPage = () => {
       <EmployeeList employees={filteredEmployees} />
       <div
         ref={observerRef}
-        style={{
-          height: "50px",
-          background: "red",
-          marginBottom: "80px",
-          position: "relative",
-        }}
       />
       {loading && <p>Загрузка...</p>}
     </div>
