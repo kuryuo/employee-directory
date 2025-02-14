@@ -1,50 +1,49 @@
-# React + TypeScript + Vite
+# Employee Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a single-page application (SPA) built using React, Vite, and TypeScript. It displays a list of employees and their profiles, with functionality for filtering and searching employees, infinite scroll, and switching between light and dark themes.
 
-Currently, two official plugins are available:
+## Useful Links
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [API Documentation (Swagger)](https://frontend-test-api.stk8s.66bit.ru/swagger/index.html)  
+- [Figma Design](https://www.figma.com/design/jBoVdJcufXi7WFnTvZFjrK/66.%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B5-%D0%B4%D0%BB%D1%8F-Frontend-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA%D0%B0?node-id=0-1&p=f&t=uEkFPvZ1HWnbOD4q-0)  
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+Make sure you have the following installed:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Node.js (version 16 or higher)
+- npm or Yarn
+
+### Installing Dependencies
+
+Clone the repository:
+
 ```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+https://github.com/kuryuo/employee-directory.git
 ```
+Navigate to the project directory:
+
+```
+cd employee-directory
+```
+Install the dependencies:
+```
+npm install
+```
+Run the project:
+```
+npm run dev
+```
+The application will be available at: `http://localhost:5173`.
+
+## Technologies Used
+* React 18
+* Redux (Toolkit)
+* TypeScript
+* Vite
+* HTML5, CSS3
+
+## TODO / In Progress
+The application is still a work in progress. Currently, we're focusing on improving the filtering system, error handling, and infinite scroll functionality.

@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
-import styles from './Breadcrumbs.module.css';
+import { Link } from "react-router-dom";
+import styles from "./Breadcrumbs.module.css";
 
 interface BreadcrumbsProps {
-  crumbs: { label: string, path: string }[];
+  crumbs: { label: string; path: string }[];
 }
 
 const Breadcrumbs = ({ crumbs }: BreadcrumbsProps) => {
@@ -13,7 +13,9 @@ const Breadcrumbs = ({ crumbs }: BreadcrumbsProps) => {
           <Link to={crumb.path} className={styles.crumb}>
             {crumb.label}
           </Link>
-          {index < crumbs.length - 1 && <span className={styles.separator}> &gt; </span>}
+          {index < crumbs.length - 1 && (
+            <span className={styles.separator}> &gt; </span>
+          )}
         </span>
       ))}
     </nav>

@@ -1,12 +1,12 @@
-import styles from './Header.module.css';
-import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
-import logo from '../../assets/logo.svg'; 
+import styles from "./Header.module.css";
+import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
+import logo from "../../assets/logo.svg";
 
 const Header = () => {
   return (
     <header className={styles.hdr}>
       <div className={styles.logo}>
-        <img src={logo} alt="Logo" /> 
+        <img src={logo} alt="Logo" />
       </div>
       <div className={styles.info}>
         <span className={styles.contact}>+7 343 290 84 76</span>

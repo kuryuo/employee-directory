@@ -8,11 +8,11 @@
 .switch {
   width: 55px;
   height: 26px;
-  background-color: var(--blue); 
+  background-color: var(--blue);
   box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 50px;
   position: relative;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
 }
 
 .icon {
@@ -28,5 +28,5 @@
 }
 
 .switch.dark .icon {
-  left: 32px; 
+  left: 32px;
 }

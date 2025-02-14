@@ -1,19 +1,18 @@
 .breadcrumbs {
-    font-size: 18px;
-    padding: 28px 180px;
-  }
-  
-  .crumb {
-    text-decoration: none;
-    color: var(--grey-text);
-  }
-  
-  .crumb:hover {
-    color: var(--dark-grey);
-  }
-  
-  .separator {
-    color: var(--grey-text);
-    padding: 0px 16px;
-  }
-  
+  font-size: 18px;
+  padding: 28px 180px;
+}
+
+.crumb {
+  text-decoration: none;
+  color: var(--grey-text);
+}
+
+.crumb:hover {
+  color: var(--dark-grey);
+}
+
+.separator {
+  color: var(--grey-text);
+  padding: 0px 16px;
+}

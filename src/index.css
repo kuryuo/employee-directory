@@ -1,31 +1,32 @@
 :root {
-    --blue: #155DA4;
-    --dark-blue: #0F3E6C;
-    --grey: #F2F2F2;
-    --dark-grey: #3E3E3E;
-    --black: #292929;
-    --grey-text: #B0B0B0;
-  }
+  --blue: #155da4;
+  --dark-blue: #0f3e6c;
+  --grey: #f2f2f2;
+  --dark-grey: #3e3e3e;
+  --black: #292929;
+  --grey-text: #b0b0b0;
+}
 
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 a {
   text-decoration: none;
-  color: inherit; 
+  color: inherit;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
 table {
-  border-collapse: collapse; 
+  border-collapse: collapse;
   width: 100%;
 }
 
@@ -44,7 +45,7 @@ button {
 }
 
 body {
-  font-family: 'Raleway', sans-serif; 
+  font-family: "Raleway", sans-serif;
 }
 
 input,

@@ -1,5 +1,5 @@
-import styles from './EmployeeCard.module.css';
-import { Employee } from '../../types';
+import styles from "./EmployeeCard.module.css";
+import { Employee } from "../../types";
 
 interface EmployeeCardProps {
   employee: Employee;
@@ -10,7 +10,11 @@ const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee }) => {
     <div className={styles.cardContainer}>
       <div className={styles.cardHeader}>
         <div className={styles.avatarContainer}>
-          <img src={employee.photo} alt={employee.name} className={styles.avatar} />
+          <img
+            src={employee.photo}
+            alt={employee.name}
+            className={styles.avatar}
+          />
         </div>
         <div className={styles.infoContainer}>
           <h2 className={styles.name}>{employee.name}</h2>
